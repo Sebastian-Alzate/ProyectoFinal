@@ -1,16 +1,16 @@
 package controlador;
 
 import java.sql.Connection;
+import java.util.ArrayList;
 import modelo.*;
 
-public class CControl {
+public class CControlCajero {
     
     CConexion con = new CConexion();
     Connection conecta;
-    CConsultas consulta = new CConsultas();
+    CConsultasCajero consulta = new CConsultasCajero();
 
-    public CControl() {
-
+    public CControlCajero() {
     }
     
     

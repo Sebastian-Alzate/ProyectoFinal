@@ -93,7 +93,6 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         Administracion p = new Administracion();
         p.setVisible(true);
-        System.exit(0);
         dispose();
     }//GEN-LAST:event_PantallaAdministracionActionPerformed
 

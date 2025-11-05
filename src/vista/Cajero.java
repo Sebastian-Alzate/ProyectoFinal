@@ -1,21 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package vista;
 
-/**
- *
- * @author Asus
- */
+import java.util.HashMap;
+
 public class Cajero extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Cajero
-     */
     public Cajero() {
         initComponents();
     }
+
+    HashMap<Integer, Integer> cajero = new HashMap<>();
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -26,31 +19,320 @@ public class Cajero extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jButton10 = new javax.swing.JButton();
+        Titulo = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        Informacion = new javax.swing.JTextArea();
+        n1 = new javax.swing.JButton();
+        n2 = new javax.swing.JButton();
+        n3 = new javax.swing.JButton();
+        n4 = new javax.swing.JButton();
+        n5 = new javax.swing.JButton();
+        n6 = new javax.swing.JButton();
+        n7 = new javax.swing.JButton();
+        n9 = new javax.swing.JButton();
+        n0 = new javax.swing.JButton();
+        n8 = new javax.swing.JButton();
+        Retirar = new javax.swing.JButton();
+        Limpiar = new javax.swing.JButton();
+        Texto = new javax.swing.JLabel();
+        Corregir = new javax.swing.JButton();
+        Cerrar = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        CantidadCajero = new javax.swing.JTextArea();
+
+        jTextField1.setText("jTextField1");
+
+        jButton10.setText("8");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("CAJERO");
+        Titulo.setText("CAJERO");
+
+        Informacion.setColumns(20);
+        Informacion.setRows(5);
+        jScrollPane1.setViewportView(Informacion);
+
+        n1.setText("1");
+        n1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                n1ActionPerformed(evt);
+            }
+        });
+
+        n2.setText("2");
+        n2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                n2ActionPerformed(evt);
+            }
+        });
+
+        n3.setText("3");
+        n3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                n3ActionPerformed(evt);
+            }
+        });
+
+        n4.setText("4");
+        n4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                n4ActionPerformed(evt);
+            }
+        });
+
+        n5.setText("5");
+        n5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                n5ActionPerformed(evt);
+            }
+        });
+
+        n6.setText("6");
+        n6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                n6ActionPerformed(evt);
+            }
+        });
+
+        n7.setText("7");
+        n7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                n7ActionPerformed(evt);
+            }
+        });
+
+        n9.setText("9");
+        n9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                n9ActionPerformed(evt);
+            }
+        });
+
+        n0.setText("0");
+        n0.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                n0ActionPerformed(evt);
+            }
+        });
+
+        n8.setText("8");
+        n8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                n8ActionPerformed(evt);
+            }
+        });
+
+        Retirar.setText("Retirar");
+        Retirar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RetirarActionPerformed(evt);
+            }
+        });
+
+        Limpiar.setText("Limpiar");
+        Limpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LimpiarActionPerformed(evt);
+            }
+        });
+
+        Texto.setText("Ingrese el valor a retirar");
+
+        Corregir.setText("Corregir");
+        Corregir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CorregirActionPerformed(evt);
+            }
+        });
+
+        Cerrar.setText("Cerrar");
+        Cerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CerrarActionPerformed(evt);
+            }
+        });
+
+        CantidadCajero.setColumns(20);
+        CantidadCajero.setRows(5);
+        jScrollPane3.setViewportView(CantidadCajero);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(173, 173, 173)
-                .addComponent(jLabel1)
-                .addContainerGap(185, Short.MAX_VALUE))
+                .addGap(140, 140, 140)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(n1)
+                    .addComponent(n4)
+                    .addComponent(n7))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(n2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(n3))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(n8)
+                                .addGap(12, 12, 12)
+                                .addComponent(n9))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(n5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(n6))
+                            .addComponent(n0))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(Retirar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Corregir)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Limpiar)))
+                .addGap(49, 49, 49))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(66, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(Texto)
+                        .addGap(112, 112, 112))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(Titulo)
+                        .addGap(161, 161, 161))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(49, 49, 49))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(Cerrar)
+                        .addGap(142, 142, 142))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(jLabel1)
-                .addContainerGap(255, Short.MAX_VALUE))
+                .addComponent(Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Texto, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(n1)
+                    .addComponent(n2)
+                    .addComponent(n3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(n4)
+                    .addComponent(n5)
+                    .addComponent(n6))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(n7)
+                    .addComponent(n9)
+                    .addComponent(n8))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(n0)
+                .addGap(12, 12, 12)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Retirar)
+                    .addComponent(Corregir)
+                    .addComponent(Limpiar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Cerrar)
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void n1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_n1ActionPerformed
+        // TODO add your handling code here:
+        Informacion.setText(Informacion.getText() + "1");
+    }//GEN-LAST:event_n1ActionPerformed
+
+    private void n2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_n2ActionPerformed
+        // TODO add your handling code here:
+        Informacion.setText(Informacion.getText() + "2");
+    }//GEN-LAST:event_n2ActionPerformed
+
+    private void n3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_n3ActionPerformed
+        // TODO add your handling code here:
+        Informacion.setText(Informacion.getText() + "3");
+    }//GEN-LAST:event_n3ActionPerformed
+
+    private void n4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_n4ActionPerformed
+        // TODO add your handling code here:
+        Informacion.setText(Informacion.getText() + "4");
+    }//GEN-LAST:event_n4ActionPerformed
+
+    private void n5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_n5ActionPerformed
+        // TODO add your handling code here:
+        Informacion.setText(Informacion.getText() + "5");
+    }//GEN-LAST:event_n5ActionPerformed
+
+    private void n6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_n6ActionPerformed
+        // TODO add your handling code here:
+        Informacion.setText(Informacion.getText() + "6");
+    }//GEN-LAST:event_n6ActionPerformed
+
+    private void n7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_n7ActionPerformed
+        // TODO add your handling code here:
+        Informacion.setText(Informacion.getText() + "7");
+    }//GEN-LAST:event_n7ActionPerformed
+
+    private void n8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_n8ActionPerformed
+        // TODO add your handling code here:
+        Informacion.setText(Informacion.getText() + "8");
+    }//GEN-LAST:event_n8ActionPerformed
+
+    private void n9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_n9ActionPerformed
+        // TODO add your handling code here:
+        Informacion.setText(Informacion.getText() + "9");
+    }//GEN-LAST:event_n9ActionPerformed
+
+    private void n0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_n0ActionPerformed
+        // TODO add your handling code here:
+        Informacion.setText(Informacion.getText() + "0");
+    }//GEN-LAST:event_n0ActionPerformed
+
+    private void LimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LimpiarActionPerformed
+        // TODO add your handling code here:
+        Informacion.setText("");
+    }//GEN-LAST:event_LimpiarActionPerformed
+
+    private void CorregirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CorregirActionPerformed
+        // TODO add your handling code here:
+        String Cadena = Informacion.getText();
+        if (Cadena == null) {
+            Informacion.setText("No hay nada para corregir.");
+            return;
+        }
+
+        String NCadena = "";
+        for (int i = 0; i < Cadena.length() - 1; i++) {
+            NCadena += Cadena.charAt(i);
+        }
+        Informacion.setText(NCadena);
+    }//GEN-LAST:event_CorregirActionPerformed
+
+    private void RetirarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RetirarActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_RetirarActionPerformed
+
+    private void CerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CerrarActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_CerrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,6 +360,9 @@ public class Cajero extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Cajero.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -88,6 +373,27 @@ public class Cajero extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JTextArea CantidadCajero;
+    private javax.swing.JButton Cerrar;
+    private javax.swing.JButton Corregir;
+    private javax.swing.JTextArea Informacion;
+    private javax.swing.JButton Limpiar;
+    private javax.swing.JButton Retirar;
+    private javax.swing.JLabel Texto;
+    private javax.swing.JLabel Titulo;
+    private javax.swing.JButton jButton10;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JButton n0;
+    private javax.swing.JButton n1;
+    private javax.swing.JButton n2;
+    private javax.swing.JButton n3;
+    private javax.swing.JButton n4;
+    private javax.swing.JButton n5;
+    private javax.swing.JButton n6;
+    private javax.swing.JButton n7;
+    private javax.swing.JButton n8;
+    private javax.swing.JButton n9;
     // End of variables declaration//GEN-END:variables
 }

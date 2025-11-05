@@ -2,6 +2,7 @@ package modelo;
 
 public class CClientes {
     
+    int id;
     String nombre;
     String apellido;
     String telefono;
@@ -13,7 +14,8 @@ public class CClientes {
     public CClientes() {
     }
 
-    public CClientes(String nombre, String apellido, String telefono, String ciudad, int ncuenta, double saldo, int estado) {
+    public CClientes(int id, String nombre, String apellido, String telefono, String ciudad, int ncuenta, double saldo, int estado) {
+        this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.telefono = telefono;
@@ -22,7 +24,11 @@ public class CClientes {
         this.saldo = saldo;
         this.estado = estado;
     }
-
+    
+    public int getId() {
+        return id;
+    }
+    
     public String getNombre() {
         return nombre;
     }
