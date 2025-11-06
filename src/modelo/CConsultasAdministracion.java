@@ -14,7 +14,7 @@ public class CConsultasAdministracion {
     
     public ArrayList<CCajeros> ListarCajeros(Connection con) {
         this.con = con;
-        query = "SELECT * FROM datos";
+        query = "SELECT 'cajero' FROM banco";
         ArrayList<CCajeros> lista = new ArrayList<>();
         try {
             PreparedStatement preparar = con.prepareStatement(query);
@@ -41,7 +41,7 @@ public class CConsultasAdministracion {
     
     public ArrayList<CClientes> ListarClientes(Connection con) {
         this.con = con;
-        query = "SELECT * FROM datos";
+        query = "SELECT clientes FROM banco";
         ArrayList<CClientes> lista = new ArrayList<>();
         try {
             PreparedStatement preparar = con.prepareStatement(query);
