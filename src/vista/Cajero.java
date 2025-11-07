@@ -1,15 +1,12 @@
 package vista;
 
-import java.util.HashMap;
+import vista.Principal;
 
 public class Cajero extends javax.swing.JFrame {
 
     public Cajero() {
         initComponents();
     }
-
-    HashMap<Integer, Integer> cajero = new HashMap<>();
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -41,6 +38,7 @@ public class Cajero extends javax.swing.JFrame {
         Cerrar = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         CantidadCajero = new javax.swing.JTextArea();
+        Volver = new javax.swing.JButton();
 
         jTextField1.setText("jTextField1");
 
@@ -158,6 +156,13 @@ public class Cajero extends javax.swing.JFrame {
         CantidadCajero.setRows(5);
         jScrollPane3.setViewportView(CantidadCajero);
 
+        Volver.setText("Volver");
+        Volver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VolverActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -211,8 +216,10 @@ public class Cajero extends javax.swing.JFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(49, 49, 49))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(Volver)
+                        .addGap(18, 18, 18)
                         .addComponent(Cerrar)
-                        .addGap(142, 142, 142))))
+                        .addGap(89, 89, 89))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -247,7 +254,9 @@ public class Cajero extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Cerrar)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Cerrar)
+                    .addComponent(Volver))
                 .addContainerGap(36, Short.MAX_VALUE))
         );
 
@@ -334,6 +343,13 @@ public class Cajero extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_CerrarActionPerformed
 
+    private void VolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VolverActionPerformed
+        // TODO add your handling code here:
+        Principal p = new Principal();
+        p.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_VolverActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -381,6 +397,7 @@ public class Cajero extends javax.swing.JFrame {
     private javax.swing.JButton Retirar;
     private javax.swing.JLabel Texto;
     private javax.swing.JLabel Titulo;
+    private javax.swing.JButton Volver;
     private javax.swing.JButton jButton10;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;

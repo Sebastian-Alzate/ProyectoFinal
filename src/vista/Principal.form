@@ -28,11 +28,19 @@
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="111" max="-2" attributes="0"/>
           </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
-              <Component id="PantallaCajero" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
-              <Component id="PantallaAdministracion" min="-2" max="-2" attributes="0"/>
+          <Group type="102" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
+                      <Component id="PantallaCajero" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
+                      <Component id="PantallaAdministracion" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="156" max="-2" attributes="0"/>
+                      <Component id="CerrarPrincipal" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
               <EmptySpace pref="63" max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -47,7 +55,9 @@
                   <Component id="PantallaCajero" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="PantallaAdministracion" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="27" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="CerrarPrincipal" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="20" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -72,6 +82,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PantallaAdministracionActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="CerrarPrincipal">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Cerrar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CerrarPrincipalActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

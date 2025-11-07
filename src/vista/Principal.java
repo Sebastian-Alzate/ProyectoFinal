@@ -1,22 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package vista;
-
-/**
- *
- * @author Asus
- */
-
-import vista.Cajero;
-import vista.Administracion;
 
 public class Principal extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Principal
-     */
     public Principal() {
         initComponents();
     }
@@ -33,6 +18,7 @@ public class Principal extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         PantallaCajero = new javax.swing.JButton();
         PantallaAdministracion = new javax.swing.JButton();
+        CerrarPrincipal = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -52,6 +38,13 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        CerrarPrincipal.setText("Cerrar");
+        CerrarPrincipal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CerrarPrincipalActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -61,10 +54,15 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(111, 111, 111))
             .addGroup(layout.createSequentialGroup()
-                .addGap(77, 77, 77)
-                .addComponent(PantallaCajero)
-                .addGap(70, 70, 70)
-                .addComponent(PantallaAdministracion)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(77, 77, 77)
+                        .addComponent(PantallaCajero)
+                        .addGap(70, 70, 70)
+                        .addComponent(PantallaAdministracion))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(156, 156, 156)
+                        .addComponent(CerrarPrincipal)))
                 .addContainerGap(63, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -76,7 +74,9 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(PantallaCajero)
                     .addComponent(PantallaAdministracion))
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(CerrarPrincipal)
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         pack();
@@ -95,6 +95,11 @@ public class Principal extends javax.swing.JFrame {
         p.setVisible(true);
         dispose();
     }//GEN-LAST:event_PantallaAdministracionActionPerformed
+
+    private void CerrarPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CerrarPrincipalActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_CerrarPrincipalActionPerformed
 
     /**
      * @param args the command line arguments
@@ -132,6 +137,7 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton CerrarPrincipal;
     private javax.swing.JButton PantallaAdministracion;
     private javax.swing.JButton PantallaCajero;
     private javax.swing.JLabel jLabel1;

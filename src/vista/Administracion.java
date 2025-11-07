@@ -1,23 +1,22 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package vista;
 
-/**
- *
- * @author Asus
- */
-
-import vista.AdministracionCajero;
+import javax.swing.table.DefaultTableModel;
+import controlador.CControlAdministracion;
+import java.util.ArrayList;
+import modelo.CClientes;
 
 public class Administracion extends javax.swing.JFrame {
+    
+    DefaultTableModel modelo;
+    CControlAdministracion c = new CControlAdministracion();
 
-    /**
-     * Creates new form Administracion
-     */
     public Administracion() {
         initComponents();
+        
+        modelo = (DefaultTableModel) tabla.getModel();
+        tabla.setShowHorizontalLines(true);
+        tabla.setShowVerticalLines(true);
+        tabla.setGridColor(java.awt.Color.BLACK);
     }
 
     /**
@@ -43,7 +42,7 @@ public class Administracion extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         Saldo = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabla = new javax.swing.JTable();
         CerrarCliente = new javax.swing.JButton();
         AdministracionCajeros = new javax.swing.JButton();
         ListarCliente = new javax.swing.JButton();
@@ -54,6 +53,11 @@ public class Administracion extends javax.swing.JFrame {
         BuscarIDCliente = new javax.swing.JButton();
         ConsignarDineroCliente = new javax.swing.JButton();
         RetirarDineroCliente = new javax.swing.JButton();
+        Volver = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        salida = new javax.swing.JTextArea();
+        jLabel8 = new javax.swing.JLabel();
+        IDCliente = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -71,7 +75,7 @@ public class Administracion extends javax.swing.JFrame {
 
         jLabel7.setText("Saldo:");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null},
@@ -82,7 +86,7 @@ public class Administracion extends javax.swing.JFrame {
                 "ID", "Nombres", "Apellidos", "Teléfono", "Ciudad", "Número Cuenta", "Saldo", "Estado"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tabla);
 
         CerrarCliente.setText("Cerrar");
         CerrarCliente.addActionListener(new java.awt.event.ActionListener() {
@@ -99,6 +103,11 @@ public class Administracion extends javax.swing.JFrame {
         });
 
         ListarCliente.setText("Listar");
+        ListarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ListarClienteActionPerformed(evt);
+            }
+        });
 
         AgregarCliente.setText("Agregar");
 
@@ -114,59 +123,74 @@ public class Administracion extends javax.swing.JFrame {
 
         RetirarDineroCliente.setText("Retirar");
 
+        Volver.setText("Volver");
+        Volver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VolverActionPerformed(evt);
+            }
+        });
+
+        salida.setColumns(20);
+        salida.setRows(5);
+        jScrollPane2.setViewportView(salida);
+
+        jLabel8.setText("ID cliente:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(327, 327, 327))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(Volver)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(AdministracionCajeros)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(CerrarCliente)
                         .addContainerGap())))
             .addGroup(layout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(18, 18, 18)
+                        .addComponent(Apellido)))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(18, 18, 18)
-                                .addComponent(Apellido)))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(Telefono))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(Ciudad)))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(NumeroCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(Saldo, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1))
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(Telefono, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(Ciudad)))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(NumeroCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(Saldo, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(ListarCliente)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(AgregarCliente)
@@ -179,10 +203,15 @@ public class Administracion extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(RetirarDineroCliente)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(BuscarNombreCliente)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(BuscarIDCliente)))
-                .addContainerGap())
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(BuscarNombreCliente)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(BuscarIDCliente))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(IDCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -205,7 +234,11 @@ public class Administracion extends javax.swing.JFrame {
                     .addComponent(jLabel5)
                     .addComponent(jLabel7)
                     .addComponent(Saldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 121, Short.MAX_VALUE)
+                .addGap(24, 24, 24)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(IDCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ListarCliente)
                     .addComponent(AgregarCliente)
@@ -217,10 +250,13 @@ public class Administracion extends javax.swing.JFrame {
                     .addComponent(RetirarDineroCliente))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(CerrarCliente)
-                    .addComponent(AdministracionCajeros))
+                    .addComponent(AdministracionCajeros)
+                    .addComponent(Volver))
                 .addContainerGap())
         );
 
@@ -238,6 +274,31 @@ public class Administracion extends javax.swing.JFrame {
         p.setVisible(true);
         dispose();
     }//GEN-LAST:event_AdministracionCajerosActionPerformed
+
+    private void VolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VolverActionPerformed
+        // TODO add your handling code here:
+        Principal p = new Principal();
+        p.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_VolverActionPerformed
+
+    private void ListarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListarClienteActionPerformed
+        // TODO add your handling code here:
+        ArrayList<CClientes> lista = new ArrayList<>();
+        lista = c.ListarClientes();
+
+        modelo.setRowCount(0);
+        boolean hayDatos = false;
+        for (CClientes con : lista) {
+            modelo.addRow(new Object[]{con.getId(), con.getNombre(), con.getApellido(), con.getTelefono(), con.getCiudad(), con.getNcuenta(), con.getSaldo(), con.getEstado()});
+            hayDatos = true;
+        }
+        if (hayDatos) {
+            salida.setText("Clientes listados correctamente.");
+        } else {
+            salida.setText("No hay clientes para listar.");
+        }
+    }//GEN-LAST:event_ListarClienteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -285,12 +346,14 @@ public class Administracion extends javax.swing.JFrame {
     private javax.swing.JButton ConsignarDineroCliente;
     private javax.swing.JButton EditarCliente;
     private javax.swing.JButton EliminarCliente;
+    private javax.swing.JTextField IDCliente;
     private javax.swing.JButton ListarCliente;
     private javax.swing.JTextField Nombre;
     private javax.swing.JTextField NumeroCuenta;
     private javax.swing.JButton RetirarDineroCliente;
     private javax.swing.JTextField Saldo;
     private javax.swing.JTextField Telefono;
+    private javax.swing.JButton Volver;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -298,7 +361,10 @@ public class Administracion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextArea salida;
+    private javax.swing.JTable tabla;
     // End of variables declaration//GEN-END:variables
 }

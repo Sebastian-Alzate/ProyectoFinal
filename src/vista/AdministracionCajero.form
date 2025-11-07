@@ -25,40 +25,50 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="BilletesDiez" min="-2" pref="100" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="BilletesVeinte" min="-2" pref="75" max="-2" attributes="0"/>
                   </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="BilletesDiez" max="32767" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                          <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                              <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="233" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="BilletesCincuenta" min="-2" pref="75" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="BilletesCien" min="-2" pref="75" max="-2" attributes="0"/>
+                          <Component id="BilletesCincuenta" min="-2" pref="75" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="166" max="32767" attributes="0"/>
                   </Group>
-                  <Component id="BilletesCien" alignment="1" min="-2" pref="75" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="125" max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="CerrarCajero" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Component id="Volver" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="CerrarCajero" min="-2" max="-2" attributes="0"/>
+                  </Group>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jScrollPane2" alignment="0" max="32767" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="ListarCajero" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -72,11 +82,16 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="QuitarBilletesCajero" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jScrollPane2" alignment="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
+              <EmptySpace pref="32" max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
+              <Component id="jLabel6" min="-2" pref="51" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="IDCajero" min="-2" pref="75" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -89,10 +104,15 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="BilletesDiez" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="BilletesCincuenta" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="BilletesDiez" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="IDCajero" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="BilletesVeinte" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -113,7 +133,10 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jScrollPane2" min="-2" pref="179" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="CerrarCajero" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="CerrarCajero" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="Volver" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -139,8 +162,6 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Billetes de Cincuenta:"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="BilletesDiez">
     </Component>
     <Component class="javax.swing.JTextField" name="BilletesVeinte">
     </Component>
@@ -196,16 +217,25 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Agregar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AgregarCajeroActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="EditarCajero">
       <Properties>
         <Property name="text" type="java.lang.String" value="Editar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EditarCajeroActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="EliminarCajero">
       <Properties>
         <Property name="text" type="java.lang.String" value="Eliminar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EliminarCajeroActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="AgregarBilletesCajero">
       <Properties>
@@ -232,5 +262,25 @@
         </Component>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JButton" name="Volver">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Volver"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="VolverActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel6">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="ID cajero:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="IDCajero">
+    </Component>
+    <Component class="javax.swing.JTextField" name="BilletesDiez">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BilletesDiezActionPerformed"/>
+      </Events>
+    </Component>
   </SubComponents>
 </Form>
