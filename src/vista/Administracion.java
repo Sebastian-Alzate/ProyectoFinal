@@ -9,7 +9,7 @@ public class Administracion extends javax.swing.JFrame {
     
     DefaultTableModel modelo;
     CControlAdministracion c = new CControlAdministracion();
-
+    
     public Administracion() {
         initComponents();
         
@@ -110,14 +110,39 @@ public class Administracion extends javax.swing.JFrame {
         });
 
         AgregarCliente.setText("Agregar");
+        AgregarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AgregarClienteActionPerformed(evt);
+            }
+        });
 
         EditarCliente.setText("Editar");
+        EditarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EditarClienteActionPerformed(evt);
+            }
+        });
 
         EliminarCliente.setText("Eliminar");
+        EliminarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EliminarClienteActionPerformed(evt);
+            }
+        });
 
         BuscarNombreCliente.setText("Buscar por nombre");
+        BuscarNombreCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BuscarNombreClienteActionPerformed(evt);
+            }
+        });
 
         BuscarIDCliente.setText("Buscar por ID");
+        BuscarIDCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BuscarIDClienteActionPerformed(evt);
+            }
+        });
 
         ConsignarDineroCliente.setText("Consignar");
 
@@ -265,11 +290,13 @@ public class Administracion extends javax.swing.JFrame {
 
     private void CerrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CerrarClienteActionPerformed
         // TODO add your handling code here:
+        
         System.exit(0);
     }//GEN-LAST:event_CerrarClienteActionPerformed
 
     private void AdministracionCajerosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdministracionCajerosActionPerformed
         // TODO add your handling code here:
+        
         AdministracionCajero p = new AdministracionCajero();
         p.setVisible(true);
         dispose();
@@ -277,6 +304,7 @@ public class Administracion extends javax.swing.JFrame {
 
     private void VolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VolverActionPerformed
         // TODO add your handling code here:
+        
         Principal p = new Principal();
         p.setVisible(true);
         dispose();
@@ -284,9 +312,10 @@ public class Administracion extends javax.swing.JFrame {
 
     private void ListarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListarClienteActionPerformed
         // TODO add your handling code here:
+        
         ArrayList<CClientes> lista = new ArrayList<>();
         lista = c.ListarClientes();
-
+        
         modelo.setRowCount(0);
         boolean hayDatos = false;
         for (CClientes con : lista) {
@@ -299,6 +328,107 @@ public class Administracion extends javax.swing.JFrame {
             salida.setText("No hay clientes para listar.");
         }
     }//GEN-LAST:event_ListarClienteActionPerformed
+
+    private void AgregarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarClienteActionPerformed
+        // TODO add your handling code here:
+
+        int ncuenta = Integer.parseInt(NumeroCuenta.getText().trim());
+        double saldo = Integer.parseInt(Saldo.getText().trim());
+        
+        if (!Nombre.getText().isEmpty() && !Apellido.getText().isEmpty() && !Telefono.getText().isEmpty() && !Ciudad.getText().isEmpty() && !NumeroCuenta.getText().isEmpty() && !Saldo.getText().isEmpty()) {
+            boolean bandera = c.IngresarCliente(Nombre.getText(), Apellido.getText(), Telefono.getText(), Ciudad.getText(), ncuenta, saldo);
+            if (bandera) {
+                salida.setText("Se agregó el cliente correctamente.");
+            } else {
+                salida.setText("No se pudo agregar el cliente.");
+            }
+        } else {
+            salida.setText("Ingrese los datos para agregar el cliente.");
+        }
+    }//GEN-LAST:event_AgregarClienteActionPerformed
+
+    private void EditarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarClienteActionPerformed
+        // TODO add your handling code here:
+
+        int ncuenta = Integer.parseInt(NumeroCuenta.getText().trim());
+        double saldo = Integer.parseInt(Saldo.getText().trim());
+        int idcliente = Integer.parseInt(IDCliente.getText().trim());
+        
+        if (!Nombre.getText().isEmpty() && !Apellido.getText().isEmpty() && !Telefono.getText().isEmpty() && !Ciudad.getText().isEmpty() && !NumeroCuenta.getText().isEmpty() && !Saldo.getText().isEmpty() && !IDCliente.getText().isEmpty()) {
+            boolean bandera = c.EditarCliente(idcliente, Nombre.getText(), Apellido.getText(), Telefono.getText(), Ciudad.getText(), ncuenta, saldo);
+            if (bandera) {
+                salida.setText("Se editó el cliente correctamente.");
+            } else {
+                salida.setText("No existe un cliente con el id " + idcliente + ".");
+            }
+        } else {
+            salida.setText("Ingrese los datos para editar el cliente.");
+        }
+    }//GEN-LAST:event_EditarClienteActionPerformed
+
+    private void EliminarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarClienteActionPerformed
+        // TODO add your handling code here:
+
+        int idcliente = Integer.parseInt(IDCliente.getText().trim());
+        
+        if (!IDCliente.getText().isEmpty()) {
+            boolean bandera = c.EliminarCajero(idcliente);
+            if (bandera) {
+                salida.setText("Se eliminó el cliente correctamente.");
+            } else {
+                salida.setText("No existe un cliente con el id " + idcliente + ".");
+            }
+        } else {
+            salida.setText("Ingrese el id para eliminar el cliente.");
+        }
+    }//GEN-LAST:event_EliminarClienteActionPerformed
+
+    private void BuscarNombreClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarNombreClienteActionPerformed
+        // TODO add your handling code here:
+        
+        ArrayList<CClientes> lista = new ArrayList<>();
+        modelo.setRowCount(0);
+        
+        if (!Nombre.getText().isEmpty()) {
+            lista = c.BuscarPorNombre(Nombre.getText());
+            boolean hayDatos = false;
+            for (CClientes con : lista) {
+                modelo.addRow(new Object[]{con.getId(), con.getNombre(), con.getApellido(), con.getTelefono(), con.getCiudad(), con.getNcuenta(), con.getSaldo(), con.getEstado()});
+                hayDatos = true;
+            }
+            if (hayDatos) {
+                salida.setText("Clientes con el nombre " + Nombre.getText() + " listados.");
+            } else {
+                salida.setText("No hay clientes con ese nombre.");
+            }
+        } else {
+            salida.setText("Ingrese un nombre para buscar.");
+        }
+    }//GEN-LAST:event_BuscarNombreClienteActionPerformed
+
+    private void BuscarIDClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarIDClienteActionPerformed
+        // TODO add your handling code here:
+        
+        ArrayList<CClientes> lista = new ArrayList<>();
+        int idcliente = Integer.parseInt(IDCliente.getText().trim());
+        modelo.setRowCount(0);
+        
+        if (!Nombre.getText().isEmpty()) {
+            lista = c.BuscarPorId(idcliente);
+            boolean hayDatos = false;
+            for (CClientes con : lista) {
+                modelo.addRow(new Object[]{con.getId(), con.getNombre(), con.getApellido(), con.getTelefono(), con.getCiudad(), con.getNcuenta(), con.getSaldo(), con.getEstado()});
+                hayDatos = true;
+            }
+            if (hayDatos) {
+                salida.setText("Cliente con el id " + idcliente + " consultado.");
+            } else {
+                salida.setText("No existe un cliente con ese id.");
+            }
+        } else {
+            salida.setText("Ingrese un id para buscar.");
+        }
+    }//GEN-LAST:event_BuscarIDClienteActionPerformed
 
     /**
      * @param args the command line arguments

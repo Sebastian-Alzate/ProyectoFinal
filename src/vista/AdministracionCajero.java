@@ -240,6 +240,7 @@ public class AdministracionCajero extends javax.swing.JFrame {
 
     private void ListarCajeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListarCajeroActionPerformed
         // TODO add your handling code here:
+        
         ArrayList<CCajeros> lista = new ArrayList<>();
         lista = c.ListarCajeros();
 
@@ -258,11 +259,13 @@ public class AdministracionCajero extends javax.swing.JFrame {
 
     private void CerrarCajeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CerrarCajeroActionPerformed
         // TODO add your handling code here:
+        
         System.exit(0);
     }//GEN-LAST:event_CerrarCajeroActionPerformed
 
     private void VolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VolverActionPerformed
         // TODO add your handling code here:
+        
         Administracion p = new Administracion();
         p.setVisible(true);
         dispose();

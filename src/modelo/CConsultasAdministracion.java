@@ -176,7 +176,7 @@ public class CConsultasAdministracion {
                     preparar1.executeUpdate();
 
                     //Editar el cliente y ponerlo libre de una vez.
-                    query = "UPDATE cajeros SET nombre='" + nombre + "', apellido='" + apellido + "', telefono='" + telefono + "', ciudad='" + ciudad + "', ncuenta=" + ncuenta + ", saldo=" + saldo + " WHERE id=" + idcliente + ";";
+                    query = "UPDATE clientes SET nombre='" + nombre + "', apellido='" + apellido + "', telefono='" + telefono + "', ciudad='" + ciudad + "', ncuenta=" + ncuenta + ", saldo=" + saldo + " WHERE id=" + idcliente + ";";
                     PreparedStatement preparar2 = con.prepareStatement(query);
                     preparar2.executeUpdate();
                     System.out.println("Cliente editado.");
@@ -194,7 +194,7 @@ public class CConsultasAdministracion {
             return false;
         }
     }
-    
+
     public boolean EliminarCliente(Connection con, int idcliente) {
         this.con = con;
         try {
@@ -225,6 +225,62 @@ public class CConsultasAdministracion {
         } catch (SQLException ex) {
             System.out.println("Error en el sql.");
             return false;
+        }
+    }
+
+    public ArrayList<CClientes> BuscarPorNombre(Connection con, String nombre) {
+        this.con = con;
+        ArrayList<CClientes> lista = new ArrayList<>();
+        try {
+            query = "SELECT * FROM clientes WHERE nombre LIKE '%" + nombre + "%';";
+            PreparedStatement preparar = con.prepareStatement(query);
+            ResultSet resultado = preparar.executeQuery();
+
+            while (resultado.next()) {
+                CClientes c = new CClientes(
+                        resultado.getInt("id"),
+                        resultado.getString("nombre"),
+                        resultado.getString("apellido"),
+                        resultado.getString("telefono"),
+                        resultado.getString("ciudad"),
+                        resultado.getInt("ncuenta"),
+                        resultado.getDouble("saldo"),
+                        resultado.getInt("estado"));
+                lista.add(c);
+            }
+            System.out.println("Clientes consultados por un nombre determinado.");
+            return lista;
+        } catch (SQLException ex) {
+            System.out.println("Error en el sql.");
+            return null;
+        }
+    }
+
+    public ArrayList<CClientes> BuscarPorId(Connection con, int idcliente) {
+        this.con = con;
+        ArrayList<CClientes> lista = new ArrayList<>();
+        try {
+            query = "SELECT * FROM clientes WHERE id=" + idcliente + ";";
+            PreparedStatement preparar = con.prepareStatement(query);
+            ResultSet resultado = preparar.executeQuery();
+
+            while (resultado.next()) {
+                CClientes c = new CClientes(
+                        resultado.getInt("id"),
+                        resultado.getString("nombre"),
+                        resultado.getString("apellido"),
+                        resultado.getString("telefono"),
+                        resultado.getString("ciudad"),
+                        resultado.getInt("ncuenta"),
+                        resultado.getDouble("saldo"),
+                        resultado.getInt("estado"));
+                lista.add(c);
+            }
+            System.out.println("Cliente consultado por un id determinado.");
+            return lista;
+        } catch (SQLException ex) {
+            System.out.println("Error en el sql.");
+            return null;
         }
     }
 }
