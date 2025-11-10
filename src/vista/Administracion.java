@@ -6,13 +6,13 @@ import java.util.ArrayList;
 import modelo.CClientes;
 
 public class Administracion extends javax.swing.JFrame {
-    
+
     DefaultTableModel modelo;
     CControlAdministracion c = new CControlAdministracion();
-    
+
     public Administracion() {
         initComponents();
-        
+
         modelo = (DefaultTableModel) tabla.getModel();
         tabla.setShowHorizontalLines(true);
         tabla.setShowVerticalLines(true);
@@ -149,8 +149,18 @@ public class Administracion extends javax.swing.JFrame {
         });
 
         ConsignarDineroCliente.setText("Consignar");
+        ConsignarDineroCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ConsignarDineroClienteActionPerformed(evt);
+            }
+        });
 
         RetirarDineroCliente.setText("Retirar");
+        RetirarDineroCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RetirarDineroClienteActionPerformed(evt);
+            }
+        });
 
         Volver.setText("Volver");
         Volver.addActionListener(new java.awt.event.ActionListener() {
@@ -174,52 +184,9 @@ public class Administracion extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(327, 327, 327))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(Volver)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(AdministracionCajeros)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(CerrarCliente)
-                        .addContainerGap())))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(ListarCliente)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(AgregarCliente)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(EditarCliente)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(EliminarCliente)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ConsignarDineroCliente)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(RetirarDineroCliente)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(BuscarNombreCliente)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(BuscarIDCliente))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(DineroConsignar, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel10)
-                        .addGap(18, 18, 18)
-                        .addComponent(DineroRetirar, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
+                        .addGap(38, 38, 38)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2)
@@ -253,8 +220,52 @@ public class Administracion extends javax.swing.JFrame {
                                         .addComponent(jLabel8)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(IDCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(Saldo, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(Saldo, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32)
+                        .addComponent(DineroConsignar, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel10)
+                        .addGap(18, 18, 18)
+                        .addComponent(DineroRetirar, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(327, 327, 327))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(Volver)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(AdministracionCajeros)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(CerrarCliente)
+                                .addContainerGap())))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(ListarCliente)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(AgregarCliente)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(EditarCliente)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(EliminarCliente)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ConsignarDineroCliente)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(RetirarDineroCliente)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(BuscarNombreCliente)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(BuscarIDCliente))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -312,13 +323,13 @@ public class Administracion extends javax.swing.JFrame {
 
     private void CerrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CerrarClienteActionPerformed
         // TODO add your handling code here:
-        
+
         System.exit(0);
     }//GEN-LAST:event_CerrarClienteActionPerformed
 
     private void AdministracionCajerosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdministracionCajerosActionPerformed
         // TODO add your handling code here:
-        
+
         AdministracionCajero p = new AdministracionCajero();
         p.setVisible(true);
         dispose();
@@ -326,7 +337,7 @@ public class Administracion extends javax.swing.JFrame {
 
     private void VolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VolverActionPerformed
         // TODO add your handling code here:
-        
+
         Principal p = new Principal();
         p.setVisible(true);
         dispose();
@@ -334,10 +345,10 @@ public class Administracion extends javax.swing.JFrame {
 
     private void ListarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListarClienteActionPerformed
         // TODO add your handling code here:
-        
+
         ArrayList<CClientes> lista = new ArrayList<>();
         lista = c.ListarClientes();
-        
+
         modelo.setRowCount(0);
         boolean hayDatos = false;
         for (CClientes con : lista) {
@@ -354,15 +365,19 @@ public class Administracion extends javax.swing.JFrame {
     private void AgregarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarClienteActionPerformed
         // TODO add your handling code here:
 
-        int ncuenta = Integer.parseInt(NumeroCuenta.getText().trim());
-        double saldo = Integer.parseInt(Saldo.getText().trim());
-        
-        if (!Nombre.getText().isEmpty() && !Apellido.getText().isEmpty() && !Telefono.getText().isEmpty() && !Ciudad.getText().isEmpty() && !NumeroCuenta.getText().isEmpty() && !Saldo.getText().isEmpty()) {
-            boolean bandera = c.IngresarCliente(Nombre.getText(), Apellido.getText(), Telefono.getText(), Ciudad.getText(), ncuenta, saldo);
-            if (bandera) {
-                salida.setText("Se agregó el cliente correctamente.");
-            } else {
-                salida.setText("No se pudo agregar el cliente.");
+        if (!Nombre.getText().isEmpty() || !Apellido.getText().isEmpty() || !Telefono.getText().isEmpty() || !Ciudad.getText().isEmpty() || !NumeroCuenta.getText().isEmpty() || !Saldo.getText().isEmpty()) {
+
+            int ncuenta = Integer.parseInt(NumeroCuenta.getText().trim());
+            double saldo = Integer.parseInt(Saldo.getText().trim());
+
+            int x = c.IngresarCliente(Nombre.getText(), Apellido.getText(), Telefono.getText(), Ciudad.getText(), ncuenta, saldo);
+
+            if (x == 10) {
+                salida.setText("Cliente ingresado.");
+            } else if (x == 1) {
+                salida.setText("Este cliente ya existe.");
+            } else if (x == 0) {
+                salida.setText("Error en el sql.");
             }
         } else {
             salida.setText("Ingrese los datos para agregar el cliente.");
@@ -372,16 +387,22 @@ public class Administracion extends javax.swing.JFrame {
     private void EditarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarClienteActionPerformed
         // TODO add your handling code here:
 
-        int ncuenta = Integer.parseInt(NumeroCuenta.getText().trim());
-        double saldo = Integer.parseInt(Saldo.getText().trim());
-        int idcliente = Integer.parseInt(IDCliente.getText().trim());
-        
-        if (!Nombre.getText().isEmpty() && !Apellido.getText().isEmpty() && !Telefono.getText().isEmpty() && !Ciudad.getText().isEmpty() && !NumeroCuenta.getText().isEmpty() && !Saldo.getText().isEmpty() && !IDCliente.getText().isEmpty()) {
-            boolean bandera = c.EditarCliente(idcliente, Nombre.getText(), Apellido.getText(), Telefono.getText(), Ciudad.getText(), ncuenta, saldo);
-            if (bandera) {
+        if (!Nombre.getText().isEmpty() || !Apellido.getText().isEmpty() || !Telefono.getText().isEmpty() || !Ciudad.getText().isEmpty() || !NumeroCuenta.getText().isEmpty() || !Saldo.getText().isEmpty() || !IDCliente.getText().isEmpty()) {
+
+            int ncuenta = Integer.parseInt(NumeroCuenta.getText().trim());
+            double saldo = Integer.parseInt(Saldo.getText().trim());
+            int idcliente = Integer.parseInt(IDCliente.getText().trim());
+
+            int x = c.EditarCliente(idcliente, Nombre.getText(), Apellido.getText(), Telefono.getText(), Ciudad.getText(), ncuenta, saldo);
+
+            if (x == 10) {
                 salida.setText("Se editó el cliente correctamente.");
-            } else {
+            } else if (x == 1) {
+                salida.setText("El cliente se encuentra ocupado.");
+            } else if (x == 11) {
                 salida.setText("No existe un cliente con el id " + idcliente + ".");
+            } else if (x == 0) {
+                salida.setText("Error en el sql.");
             }
         } else {
             salida.setText("Ingrese los datos para editar el cliente.");
@@ -391,14 +412,20 @@ public class Administracion extends javax.swing.JFrame {
     private void EliminarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarClienteActionPerformed
         // TODO add your handling code here:
 
-        int idcliente = Integer.parseInt(IDCliente.getText().trim());
-        
         if (!IDCliente.getText().isEmpty()) {
-            boolean bandera = c.EliminarCajero(idcliente);
-            if (bandera) {
+
+            int idcliente = Integer.parseInt(IDCliente.getText().trim());
+
+            int x = c.EliminarCliente(idcliente);
+
+            if (x == 10) {
                 salida.setText("Se eliminó el cliente correctamente.");
-            } else {
+            } else if (x == 1) {
+                salida.setText("El cliente se encuentra ocupado.");
+            } else if (x == 11) {
                 salida.setText("No existe un cliente con el id " + idcliente + ".");
+            } else if (x == 0) {
+                salida.setText("Error en el sql.");
             }
         } else {
             salida.setText("Ingrese el id para eliminar el cliente.");
@@ -407,12 +434,14 @@ public class Administracion extends javax.swing.JFrame {
 
     private void BuscarNombreClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarNombreClienteActionPerformed
         // TODO add your handling code here:
-        
-        ArrayList<CClientes> lista = new ArrayList<>();
-        modelo.setRowCount(0);
-        
+
         if (!Nombre.getText().isEmpty()) {
+
+            ArrayList<CClientes> lista = new ArrayList<>();
+            modelo.setRowCount(0);
+
             lista = c.BuscarPorNombre(Nombre.getText());
+
             boolean hayDatos = false;
             for (CClientes con : lista) {
                 modelo.addRow(new Object[]{con.getId(), con.getNombre(), con.getApellido(), con.getTelefono(), con.getCiudad(), con.getNcuenta(), con.getSaldo(), con.getEstado()});
@@ -430,13 +459,15 @@ public class Administracion extends javax.swing.JFrame {
 
     private void BuscarIDClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarIDClienteActionPerformed
         // TODO add your handling code here:
-        
-        ArrayList<CClientes> lista = new ArrayList<>();
-        int idcliente = Integer.parseInt(IDCliente.getText().trim());
-        modelo.setRowCount(0);
-        
-        if (!Nombre.getText().isEmpty()) {
+
+        if (!IDCliente.getText().isEmpty()) {
+
+            ArrayList<CClientes> lista = new ArrayList<>();
+            int idcliente = Integer.parseInt(IDCliente.getText().trim());
+            modelo.setRowCount(0);
+
             lista = c.BuscarPorId(idcliente);
+
             boolean hayDatos = false;
             for (CClientes con : lista) {
                 modelo.addRow(new Object[]{con.getId(), con.getNombre(), con.getApellido(), con.getTelefono(), con.getCiudad(), con.getNcuenta(), con.getSaldo(), con.getEstado()});
@@ -451,6 +482,56 @@ public class Administracion extends javax.swing.JFrame {
             salida.setText("Ingrese un id para buscar.");
         }
     }//GEN-LAST:event_BuscarIDClienteActionPerformed
+
+    private void ConsignarDineroClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsignarDineroClienteActionPerformed
+        // TODO add your handling code here:
+
+        if (!IDCliente.getText().isEmpty() || !DineroConsignar.getText().isEmpty()) {
+
+            int idcliente = Integer.parseInt(IDCliente.getText().trim());
+            double dinero = Integer.parseInt(DineroConsignar.getText().trim());
+
+            int x = c.ConsignarDineroCliente(idcliente, dinero);
+
+            if (x == 10) {
+                salida.setText("Consignación realizada.");
+            } else if (x == 1) {
+                salida.setText("El cliente se encuentra ocupado.");
+            } else if (x == 11) {
+                salida.setText("No existe un cliente con el id " + idcliente + ".");
+            } else if (x == 0) {
+                salida.setText("Error en el sql.");
+            }
+        } else {
+            salida.setText("Ingrese el id del cliente y cuanto dinero va a consignar.");
+        }
+    }//GEN-LAST:event_ConsignarDineroClienteActionPerformed
+
+    private void RetirarDineroClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RetirarDineroClienteActionPerformed
+        // TODO add your handling code here:
+
+        if (!IDCliente.getText().isEmpty() || !DineroRetirar.getText().isEmpty()) {
+
+            int idcliente = Integer.parseInt(IDCliente.getText().trim());
+            double dinero = Integer.parseInt(DineroRetirar.getText().trim());
+
+            int x = c.RetirarDineroCliente(idcliente, dinero);
+            
+            if (x == 10) {
+                salida.setText("Retiro realizado.");
+            } else if (x == 1) {
+                salida.setText("El cliente se encuentra ocupado.");
+            } else if (x == 101) {
+                salida.setText("El dinero no es suficiente para retirar la cantidad de: " + dinero + ".");
+            } else if (x == 11) {
+                salida.setText("No existe un cliente con el id " + idcliente + ".");
+            } else if (x == 0) {
+                salida.setText("Error en el sql.");
+            }
+        } else {
+            salida.setText("Ingrese el id del cliente y cuanto dinero va a retirar.");
+        }
+    }//GEN-LAST:event_RetirarDineroClienteActionPerformed
 
     /**
      * @param args the command line arguments

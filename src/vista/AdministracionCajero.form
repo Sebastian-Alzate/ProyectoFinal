@@ -241,11 +241,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Agregar billetes"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AgregarBilletesCajeroActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="QuitarBilletesCajero">
       <Properties>
         <Property name="text" type="java.lang.String" value="Quitar billetes"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="QuitarBilletesCajeroActionPerformed"/>
+      </Events>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane2">
       <AuxValues>

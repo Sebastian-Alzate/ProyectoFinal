@@ -113,8 +113,18 @@ public class AdministracionCajero extends javax.swing.JFrame {
         });
 
         AgregarBilletesCajero.setText("Agregar billetes");
+        AgregarBilletesCajero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AgregarBilletesCajeroActionPerformed(evt);
+            }
+        });
 
         QuitarBilletesCajero.setText("Quitar billetes");
+        QuitarBilletesCajero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                QuitarBilletesCajeroActionPerformed(evt);
+            }
+        });
 
         salida.setColumns(20);
         salida.setRows(5);
@@ -240,7 +250,7 @@ public class AdministracionCajero extends javax.swing.JFrame {
 
     private void ListarCajeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListarCajeroActionPerformed
         // TODO add your handling code here:
-        
+
         ArrayList<CCajeros> lista = new ArrayList<>();
         lista = c.ListarCajeros();
 
@@ -259,13 +269,13 @@ public class AdministracionCajero extends javax.swing.JFrame {
 
     private void CerrarCajeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CerrarCajeroActionPerformed
         // TODO add your handling code here:
-        
+
         System.exit(0);
     }//GEN-LAST:event_CerrarCajeroActionPerformed
 
     private void VolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VolverActionPerformed
         // TODO add your handling code here:
-        
+
         Administracion p = new Administracion();
         p.setVisible(true);
         dispose();
@@ -274,16 +284,18 @@ public class AdministracionCajero extends javax.swing.JFrame {
     private void AgregarCajeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarCajeroActionPerformed
         // TODO add your handling code here:
 
-        int ndiez = Integer.parseInt(BilletesDiez.getText().trim());
-        int nveinte = Integer.parseInt(BilletesVeinte.getText().trim());
-        int ncincuenta = Integer.parseInt(BilletesCincuenta.getText().trim());
-        int ncien = Integer.parseInt(BilletesCien.getText().trim());
+        if (!BilletesDiez.getText().isEmpty() || !BilletesVeinte.getText().isEmpty() || !BilletesCincuenta.getText().isEmpty() || !BilletesCien.getText().isEmpty()) {
 
-        if (!BilletesDiez.getText().isEmpty() && !BilletesVeinte.getText().isEmpty() && !BilletesCincuenta.getText().isEmpty() && !BilletesCien.getText().isEmpty()) {
-            boolean bandera = c.IngresarCajero(ndiez, nveinte, ncincuenta, ncien);
-            if (bandera) {
+            int ndiez = Integer.parseInt(BilletesDiez.getText().trim());
+            int nveinte = Integer.parseInt(BilletesVeinte.getText().trim());
+            int ncincuenta = Integer.parseInt(BilletesCincuenta.getText().trim());
+            int ncien = Integer.parseInt(BilletesCien.getText().trim());
+
+            int x = c.IngresarCajero(ndiez, nveinte, ncincuenta, ncien);
+
+            if (x == 10) {
                 salida.setText("Se agregó el cajero correctamente.");
-            } else {
+            } else if (x == 0) {
                 salida.setText("No se pudo agregar el cajero.");
             }
         } else {
@@ -294,23 +306,28 @@ public class AdministracionCajero extends javax.swing.JFrame {
     private void EditarCajeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarCajeroActionPerformed
         // TODO add your handling code here:
 
-        int ndiez = Integer.parseInt(BilletesDiez.getText().trim());
-        int nveinte = Integer.parseInt(BilletesVeinte.getText().trim());
-        int ncincuenta = Integer.parseInt(BilletesCincuenta.getText().trim());
-        int ncien = Integer.parseInt(BilletesCien.getText().trim());
-        int idcajero = Integer.parseInt(IDCajero.getText().trim());
+        if (!BilletesDiez.getText().isEmpty() || !BilletesVeinte.getText().isEmpty() || !BilletesCincuenta.getText().isEmpty() || !BilletesCien.getText().isEmpty() || !IDCajero.getText().isEmpty()) {
 
-        if (!BilletesDiez.getText().isEmpty() && !BilletesVeinte.getText().isEmpty() && !BilletesCincuenta.getText().isEmpty() && !BilletesCien.getText().isEmpty() && !IDCajero.getText().isEmpty()) {
-            boolean bandera = c.EditarCajero(idcajero, ndiez, nveinte, ncincuenta, ncien);
-            if (bandera) {
+            int ndiez = Integer.parseInt(BilletesDiez.getText().trim());
+            int nveinte = Integer.parseInt(BilletesVeinte.getText().trim());
+            int ncincuenta = Integer.parseInt(BilletesCincuenta.getText().trim());
+            int ncien = Integer.parseInt(BilletesCien.getText().trim());
+            int idcajero = Integer.parseInt(IDCajero.getText().trim());
+
+            int x = c.EditarCajero(idcajero, ndiez, nveinte, ncincuenta, ncien);
+
+            if (x == 10) {
                 salida.setText("Se editó el cajero correctamente.");
-            } else {
+            } else if (x == 1) {
+                salida.setText("El cajero se encuentra ocupado.");
+            } else if (x == 11) {
                 salida.setText("No existe un cajero con el id " + idcajero + ".");
+            } else if (x == 0) {
+                salida.setText("Error en el sql.");
             }
         } else {
             salida.setText("Ingrese los datos para editar el cajero.");
         }
-
     }//GEN-LAST:event_EditarCajeroActionPerformed
 
     private void BilletesDiezActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BilletesDiezActionPerformed
@@ -320,19 +337,81 @@ public class AdministracionCajero extends javax.swing.JFrame {
     private void EliminarCajeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarCajeroActionPerformed
         // TODO add your handling code here:
 
-        int idcajero = Integer.parseInt(IDCajero.getText().trim());
-
         if (!IDCajero.getText().isEmpty()) {
-            boolean bandera = c.EliminarCajero(idcajero);
-            if (bandera) {
+
+            int idcajero = Integer.parseInt(IDCajero.getText().trim());
+
+            int x = c.EliminarCajero(idcajero);
+
+            if (x == 10) {
                 salida.setText("Se eliminó el cajero correctamente.");
-            } else {
+            } else if (x == 1) {
+                salida.setText("El cajero se encuentra ocupado.");
+            } else if (x == 11) {
                 salida.setText("No existe un cajero con el id " + idcajero + ".");
+            } else if (x == 0) {
+                salida.setText("Error en el sql.");
             }
         } else {
             salida.setText("Ingrese el id para eliminar el cajero.");
         }
     }//GEN-LAST:event_EliminarCajeroActionPerformed
+
+    private void AgregarBilletesCajeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarBilletesCajeroActionPerformed
+        // TODO add your handling code here:
+
+        if (!BilletesDiez.getText().isEmpty() || !BilletesVeinte.getText().isEmpty() || !BilletesCincuenta.getText().isEmpty() || !BilletesCien.getText().isEmpty() || !IDCajero.getText().isEmpty()) {
+
+            int idcajero = Integer.parseInt(IDCajero.getText().trim());
+            int ndiez = Integer.parseInt(BilletesDiez.getText().trim());
+            int nveinte = Integer.parseInt(BilletesVeinte.getText().trim());
+            int ncincuenta = Integer.parseInt(BilletesCincuenta.getText().trim());
+            int ncien = Integer.parseInt(BilletesCien.getText().trim());
+
+            int x = c.AgregarBilletesCajero(idcajero, ndiez, nveinte, ncincuenta, ncien);
+
+            if (x == 10) {
+                salida.setText("Agregación realizada.");
+            } else if (x == 1) {
+                salida.setText("El cajero se encuentra ocupado.");
+            } else if (x == 11) {
+                salida.setText("No existe un cajero con el id " + idcajero + ".");
+            } else if (x == 0) {
+                salida.setText("Error en el sql.");
+            }
+        } else {
+            salida.setText("Ingrese la cantidad de billetes que quiere ingresar al cajero.");
+        }
+    }//GEN-LAST:event_AgregarBilletesCajeroActionPerformed
+
+    private void QuitarBilletesCajeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_QuitarBilletesCajeroActionPerformed
+        // TODO add your handling code here:
+
+        if (!BilletesDiez.getText().isEmpty() || !BilletesVeinte.getText().isEmpty() || !BilletesCincuenta.getText().isEmpty() || !BilletesCien.getText().isEmpty() || !IDCajero.getText().isEmpty()) {
+
+            int idcajero = Integer.parseInt(IDCajero.getText().trim());
+            int ndiez = Integer.parseInt(BilletesDiez.getText().trim());
+            int nveinte = Integer.parseInt(BilletesVeinte.getText().trim());
+            int ncincuenta = Integer.parseInt(BilletesCincuenta.getText().trim());
+            int ncien = Integer.parseInt(BilletesCien.getText().trim());
+
+            int x = c.QuitarBilletesCajero(idcajero, ndiez, nveinte, ncincuenta, ncien);
+            
+            if (x == 10) {
+                salida.setText("Descuento de billetes realizado.");
+            } else if (x == 1) {
+                salida.setText("El cajero se encuentra ocupado.");
+            } else if (x == 101) {
+                salida.setText("El cajero no cuenta con los billetes suficientes para retirar la cantidad recibida.");
+            } else if (x == 11) {
+                salida.setText("No existe un cajero con el id " + idcajero + ".");
+            } else if (x == 0) {
+                salida.setText("Error en el sql.");
+            }
+        } else {
+            salida.setText("Ingrese la cantidad de billetes que quiere retirar del cajero.");
+        }
+    }//GEN-LAST:event_QuitarBilletesCajeroActionPerformed
 
     /**
      * @param args the command line arguments

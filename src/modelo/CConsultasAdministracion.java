@@ -39,21 +39,21 @@ public class CConsultasAdministracion {
         }
     }
 
-    public boolean IngresarCajero(Connection con, int ndiez, int nveinte, int ncincuenta, int ncien) {
+    public int IngresarCajero(Connection con, int ndiez, int nveinte, int ncincuenta, int ncien) {
         this.con = con;
         try {
             query = "INSERT INTO cajeros (id, ndiez, nveinte, ncincuenta, ncien, estado) VALUES (NULL, " + ndiez + ", " + nveinte + ", " + ncincuenta + ", " + ncien + ",0);";
             PreparedStatement preparar = con.prepareStatement(query);
             preparar.executeUpdate();
             System.out.println("Cajero ingresado.");
-            return true;
+            return 10;
         } catch (SQLException ex) {
             System.out.println("Error en el sql.");
-            return false;
+            return 0;
         }
     }
 
-    public boolean EditarCajero(Connection con, int idcajero, int ndiez, int nveinte, int ncincuenta, int ncien) {
+    public int EditarCajero(Connection con, int idcajero, int ndiez, int nveinte, int ncincuenta, int ncien) {
         this.con = con;
         try {
             query = "SELECT estado FROM cajeros WHERE id=" + idcajero + ";";
@@ -71,22 +71,22 @@ public class CConsultasAdministracion {
                     PreparedStatement preparar2 = con.prepareStatement(query);
                     preparar2.executeUpdate();
                     System.out.println("Cajero editado.");
-                    return true;
+                    return 10;
                 } else {
                     System.out.println("Cajero ocupado.");
-                    return false;
+                    return 1;
                 }
             } else {
                 System.out.println("No existe un cajero con este id.");
-                return false;
+                return 11;
             }
         } catch (SQLException ex) {
             System.out.println("Error en el sql.");
-            return false;
+            return 0;
         }
     }
 
-    public boolean EliminarCajero(Connection con, int idcajero) {
+    public int EliminarCajero(Connection con, int idcajero) {
         this.con = con;
         try {
             query = "SELECT estado FROM cajeros WHERE id=" + idcajero + ";";
@@ -104,22 +104,22 @@ public class CConsultasAdministracion {
                     PreparedStatement preparar2 = con.prepareStatement(query);
                     preparar2.executeUpdate();
                     System.out.println("Cajero eliminado.");
-                    return true;
+                    return 10;
                 } else {
                     System.out.println("Cajero ocupado.");
-                    return false;
+                    return 1;
                 }
             } else {
                 System.out.println("No existe un cajero con este id.");
-                return false;
+                return 11;
             }
         } catch (SQLException ex) {
             System.out.println("Error en el sql.");
-            return false;
+            return 0;
         }
     }
 
-    public boolean AgregarBilletesCajero(Connection con, int idcajero, int ndiez, int nveinte, int ncincuenta, int ncien) {
+    public int AgregarBilletesCajero(Connection con, int idcajero, int ndiez, int nveinte, int ncincuenta, int ncien) {
         this.con = con;
         try {
             query = "SELECT estado FROM cajeros WHERE id=" + idcajero + ";";
@@ -150,27 +150,27 @@ public class CConsultasAdministracion {
                         PreparedStatement preparar3 = con.prepareStatement(query);
                         preparar3.executeUpdate();
                         System.out.println("Agregación realizada.");
-                        return true;
+                        return 10;
 
                     } else {
                         System.out.println("No existe un cajero con este id.2");
-                        return false;
+                        return 11;
                     }
                 } else {
                     System.out.println("Cajero ocupado.");
-                    return false;
+                    return 1;
                 }
             } else {
                 System.out.println("No existe un cajero con este id.1");
-                return false;
+                return 11;
             }
         } catch (SQLException ex) {
             System.out.println("Error en el sql.");
-            return false;
+            return 0;
         }
     }
 
-    public boolean RetirarBilletesCajero(Connection con, int idcajero, int ndiez, int nveinte, int ncincuenta, int ncien) {
+    public int QuitarBilletesCajero(Connection con, int idcajero, int ndiez, int nveinte, int ncincuenta, int ncien) {
         this.con = con;
         try {
             query = "SELECT estado FROM cajeros WHERE id=" + idcajero + ";";
@@ -200,36 +200,36 @@ public class CConsultasAdministracion {
                             int resta2 = nveinte2 - nveinte;
                             int resta3 = ncincuenta2 - ncincuenta;
                             int resta4 = ncien2 - ncien;
-                            
+
                             //Actualizar billetes y estado del cajero.
                             query = "UPDATE cajeros SET ndiez=" + resta1 + ", nveinte=" + resta2 + ", ncincuenta=" + resta3 + ", ncien=" + resta4 + ",estado=0 WHERE id=" + idcajero + ";";
                             PreparedStatement preparar3 = con.prepareStatement(query);
                             preparar3.executeUpdate();
-                            System.out.println("Retiro realizada.");
-                            return true;
+                            System.out.println("Descuento de billetes realizado.");
+                            return 10;
                         } else {
                             //No hay billetes suficientes, entonces se libera el cajero.
                             System.out.println("Billetes insuficientes para retirar.");
                             query = "UPDATE cajeros SET estado=0 WHERE id=" + idcajero + ";";
                             PreparedStatement preparar4 = con.prepareStatement(query);
                             preparar4.executeUpdate();
-                            return false;
+                            return 101;
                         }
                     } else {
                         System.out.println("No existe un cajero con este id.2");
-                        return false;
+                        return 11;
                     }
                 } else {
                     System.out.println("Cajero ocupado.");
-                    return false;
+                    return 1;
                 }
             } else {
                 System.out.println("No existe un cajero con este id.1");
-                return false;
+                return 11;
             }
         } catch (SQLException ex) {
             System.out.println("Error en el sql.");
-            return false;
+            return 0;
         }
     }
 
@@ -262,21 +262,30 @@ public class CConsultasAdministracion {
         }
     }
 
-    public boolean IngresarCliente(Connection con, String nombre, String apellido, String telefono, String ciudad, int ncuenta, double saldo) {
+    public int IngresarCliente(Connection con, String nombre, String apellido, String telefono, String ciudad, int ncuenta, double saldo) {
         this.con = con;
         try {
-            query = "INSERT INTO clientes (id, nombre, apellido, telefono, ciudad, ncuenta, saldo, estado) VALUES (NULL, " + nombre + ", " + apellido + ", " + telefono + ", " + ciudad + ", " + ncuenta + ", " + saldo + ",0);";
+            query = "SELECT * FROM clientes WHERE telefono='" + telefono + "' OR ncuenta=" + ncuenta + ";";
             PreparedStatement preparar = con.prepareStatement(query);
-            preparar.executeUpdate();
-            System.out.println("Cliente ingresado.");
-            return true;
+            ResultSet resultado = preparar.executeQuery();
+
+            if (resultado.next()) {
+                System.out.println("Ya existe el cliente.");
+                return 1;
+            } else {
+                query = "INSERT INTO clientes (id, nombre, apellido, telefono, ciudad, ncuenta, saldo, estado) VALUES (NULL, '" + nombre + "', '" + apellido + "', '" + telefono + "', '" + ciudad + "', " + ncuenta + ", " + saldo + ",0);";
+                PreparedStatement preparar1 = con.prepareStatement(query);
+                preparar1.executeUpdate();
+                System.out.println("Cliente ingresado.");
+                return 10;
+            }
         } catch (SQLException ex) {
             System.out.println("Error en el sql.");
-            return false;
+            return 0;
         }
     }
 
-    public boolean EditarCliente(Connection con, int idcliente, String nombre, String apellido, String telefono, String ciudad, int ncuenta, double saldo) {
+    public int EditarCliente(Connection con, int idcliente, String nombre, String apellido, String telefono, String ciudad, int ncuenta, double saldo) {
         this.con = con;
         try {
             query = "SELECT estado FROM clientes WHERE id=" + idcliente + ";";
@@ -290,26 +299,26 @@ public class CConsultasAdministracion {
                     preparar1.executeUpdate();
 
                     //Editar el cliente y ponerlo libre de una vez.
-                    query = "UPDATE clientes SET nombre='" + nombre + "', apellido='" + apellido + "', telefono='" + telefono + "', ciudad='" + ciudad + "', ncuenta=" + ncuenta + ", saldo=" + saldo + " WHERE id=" + idcliente + ";";
+                    query = "UPDATE clientes SET nombre='" + nombre + "', apellido='" + apellido + "', telefono='" + telefono + "', ciudad='" + ciudad + "', ncuenta=" + ncuenta + ", saldo=" + saldo + ", estado=" + 0 + " WHERE id=" + idcliente + ";";
                     PreparedStatement preparar2 = con.prepareStatement(query);
                     preparar2.executeUpdate();
                     System.out.println("Cliente editado.");
-                    return true;
+                    return 10;
                 } else {
                     System.out.println("Cliente ocupado.");
-                    return false;
+                    return 1;
                 }
             } else {
                 System.out.println("No existe un cliente con este id.");
-                return false;
+                return 11;
             }
         } catch (SQLException ex) {
             System.out.println("Error en el sql.");
-            return false;
+            return 0;
         }
     }
 
-    public boolean EliminarCliente(Connection con, int idcliente) {
+    public int EliminarCliente(Connection con, int idcliente) {
         this.con = con;
         try {
             query = "SELECT estado FROM clientes WHERE id=" + idcliente + ";";
@@ -327,18 +336,18 @@ public class CConsultasAdministracion {
                     PreparedStatement preparar2 = con.prepareStatement(query);
                     preparar2.executeUpdate();
                     System.out.println("Cliente eliminado.");
-                    return true;
+                    return 10;
                 } else {
                     System.out.println("Cliente ocupado.");
-                    return false;
+                    return 1;
                 }
             } else {
                 System.out.println("No existe un cliente con este id.");
-                return false;
+                return 11;
             }
         } catch (SQLException ex) {
             System.out.println("Error en el sql.");
-            return false;
+            return 0;
         }
     }
 
@@ -398,7 +407,7 @@ public class CConsultasAdministracion {
         }
     }
 
-    public boolean ConsignarDineroCliente(Connection con, int idcliente, double dinero) {
+    public int ConsignarDineroCliente(Connection con, int idcliente, double dinero) {
         this.con = con;
         try {
             query = "SELECT estado FROM clientes WHERE id=" + idcliente + ";";
@@ -421,31 +430,31 @@ public class CConsultasAdministracion {
                         double saldo = resultado1.getDouble("saldo") + dinero;
 
                         //Actualizar saldo y estado del cliente.
-                        query = "UPDATE clientes SET saldo=" + dinero + ", estado=0 WHERE id=" + idcliente + ";";
+                        query = "UPDATE clientes SET saldo=" + saldo + ", estado=0 WHERE id=" + idcliente + ";";
                         PreparedStatement preparar3 = con.prepareStatement(query);
                         preparar3.executeUpdate();
                         System.out.println("Consignación realizada.");
-                        return true;
+                        return 10;
 
                     } else {
                         System.out.println("No existe un cliente con este id.2");
-                        return false;
+                        return 11;
                     }
                 } else {
                     System.out.println("Cliente ocupado.");
-                    return false;
+                    return 1;
                 }
             } else {
                 System.out.println("No existe un cliente con este id.1");
-                return false;
+                return 11;
             }
         } catch (SQLException ex) {
             System.out.println("Error en el sql.");
-            return false;
+            return 0;
         }
     }
 
-    public boolean RetirarDineroCliente(Connection con, int idcliente, double dinero) {
+    public int RetirarDineroCliente(Connection con, int idcliente, double dinero) {
         this.con = con;
         try {
             query = "SELECT estado FROM clientes WHERE id=" + idcliente + ";";
@@ -467,7 +476,7 @@ public class CConsultasAdministracion {
                     if (resultado1.next()) {
                         double saldo = resultado1.getDouble("saldo");
                         //Verificar si tiene el saldo suficiente para retirar.
-                        if (saldo <= dinero) {
+                        if (saldo >= dinero) {
 
                             double suma = saldo - dinero;
                             //Actualizar saldo y estado del cliente.
@@ -475,30 +484,30 @@ public class CConsultasAdministracion {
                             PreparedStatement preparar3 = con.prepareStatement(query);
                             preparar3.executeUpdate();
                             System.out.println("Retiro realizada.");
-                            return true;
+                            return 10;
                         } else {
                             //No hay saldo suficiente, entonces se libera el cliente.
                             System.out.println("Saldo insuficiente para retirar.");
                             query = "UPDATE clientes SET estado=0 WHERE id=" + idcliente + ";";
                             PreparedStatement preparar4 = con.prepareStatement(query);
                             preparar4.executeUpdate();
-                            return false;
+                            return 101;
                         }
                     } else {
                         System.out.println("No existe un cliente con este id.2");
-                        return false;
+                        return 11;
                     }
                 } else {
                     System.out.println("Cliente ocupado.");
-                    return false;
+                    return 1;
                 }
             } else {
                 System.out.println("No existe un cliente con este id.1");
-                return false;
+                return 11;
             }
         } catch (SQLException ex) {
             System.out.println("Error en el sql.");
-            return false;
+            return 0;
         }
     }
 }

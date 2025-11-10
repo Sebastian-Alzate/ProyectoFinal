@@ -26,25 +26,39 @@ public class CControlAdministracion {
         }
     }
 
-    public boolean IngresarCajero(int ndiez, int nveinte, int ncincuenta, int ncien) {
+    public int IngresarCajero(int ndiez, int nveinte, int ncincuenta, int ncien) {
         conecta = con.conectar();
-        boolean bandera = consulta.IngresarCajero(conecta, ndiez, nveinte, ncincuenta, ncien);
+        int x = consulta.IngresarCajero(conecta, ndiez, nveinte, ncincuenta, ncien);
         con.desconectar(conecta);
-        return bandera;
+        return x;
     }
 
-    public boolean EditarCajero(int idcajero, int ndiez, int nveinte, int ncincuenta, int ncien) {
+    public int EditarCajero(int idcajero, int ndiez, int nveinte, int ncincuenta, int ncien) {
         conecta = con.conectar();
-        boolean bandera = consulta.EditarCajero(conecta, idcajero, ndiez, nveinte, ncincuenta, ncien);
+        int x = consulta.EditarCajero(conecta, idcajero, ndiez, nveinte, ncincuenta, ncien);
         con.desconectar(conecta);
-        return bandera;
+        return x;
     }
 
-    public boolean EliminarCajero(int idcajero) {
+    public int EliminarCajero(int idcajero) {
         conecta = con.conectar();
-        boolean bandera = consulta.EliminarCajero(conecta, idcajero);
+        int x = consulta.EliminarCajero(conecta, idcajero);
         con.desconectar(conecta);
-        return bandera;
+        return x;
+    }
+
+    public int AgregarBilletesCajero(int idcajero, int ndiez, int nveinte, int ncincuenta, int ncien) {
+        conecta = con.conectar();
+        int x = consulta.AgregarBilletesCajero(conecta, idcajero, ndiez, nveinte, ncincuenta, ncien);
+        con.desconectar(conecta);
+        return x;
+    }
+
+    public int QuitarBilletesCajero(int idcajero, int ndiez, int nveinte, int ncincuenta, int ncien) {
+        conecta = con.conectar();
+        int x = consulta.QuitarBilletesCajero(conecta, idcajero, ndiez, nveinte, ncincuenta, ncien);
+        con.desconectar(conecta);
+        return x;
     }
 
     public ArrayList<CClientes> ListarClientes() {
@@ -59,27 +73,27 @@ public class CControlAdministracion {
         }
     }
 
-    public boolean IngresarCliente(String nombre, String apellido, String telefono, String ciudad, int ncuenta, double saldo) {
+    public int IngresarCliente(String nombre, String apellido, String telefono, String ciudad, int ncuenta, double saldo) {
         conecta = con.conectar();
-        boolean bandera = consulta.IngresarCliente(conecta, nombre, apellido, telefono, ciudad, ncuenta, saldo);
+        int x = consulta.IngresarCliente(conecta, nombre, apellido, telefono, ciudad, ncuenta, saldo);
         con.desconectar(conecta);
-        return bandera;
+        return x;
     }
 
-    public boolean EditarCliente(int idcliente, String nombre, String apellido, String telefono, String ciudad, int ncuenta, double saldo) {
+    public int EditarCliente(int idcliente, String nombre, String apellido, String telefono, String ciudad, int ncuenta, double saldo) {
         conecta = con.conectar();
-        boolean bandera = consulta.EditarCliente(conecta, idcliente, nombre, apellido, telefono, ciudad, ncuenta, saldo);
+        int x = consulta.EditarCliente(conecta, idcliente, nombre, apellido, telefono, ciudad, ncuenta, saldo);
         con.desconectar(conecta);
-        return bandera;
+        return x;
     }
 
-    public boolean EliminarCliente(int idcliente) {
+    public int EliminarCliente(int idcliente) {
         conecta = con.conectar();
-        boolean bandera = consulta.EliminarCliente(conecta, idcliente);
+        int x = consulta.EliminarCliente(conecta, idcliente);
         con.desconectar(conecta);
-        return bandera;
+        return x;
     }
-    
+
     public ArrayList<CClientes> BuscarPorNombre(String nombre) {
         ArrayList<CClientes> lista = new ArrayList<>();
         conecta = con.conectar();
@@ -91,7 +105,7 @@ public class CControlAdministracion {
             return null;
         }
     }
-    
+
     public ArrayList<CClientes> BuscarPorId(int idcliente) {
         ArrayList<CClientes> lista = new ArrayList<>();
         conecta = con.conectar();
@@ -102,5 +116,19 @@ public class CControlAdministracion {
         } else {
             return null;
         }
+    }
+    
+    public int ConsignarDineroCliente(int idcliente, double dinero) {
+        conecta = con.conectar();
+        int x = consulta.ConsignarDineroCliente(conecta, idcliente, dinero);
+        con.desconectar(conecta);
+        return x;
+    }
+    
+    public int RetirarDineroCliente(int idcliente, double dinero) {
+        conecta = con.conectar();
+        int x = consulta.RetirarDineroCliente(conecta, idcliente, dinero);
+        con.desconectar(conecta);
+        return x;
     }
 }
