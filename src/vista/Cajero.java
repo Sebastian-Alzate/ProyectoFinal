@@ -217,13 +217,13 @@ public class Cajero extends javax.swing.JFrame {
 
         tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Billete", "Cantidad"
+                "Billete", "Cantidad", "Valor Total"
             }
         ));
         jScrollPane5.setViewportView(tabla);
@@ -289,9 +289,6 @@ public class Cajero extends javax.swing.JFrame {
                                         .addComponent(NumeroCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(jLabel4)))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(138, 138, 138)
-                        .addComponent(Titulo))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(66, 66, 66)
                         .addComponent(Volver)
                         .addGap(18, 18, 18)
@@ -300,12 +297,17 @@ public class Cajero extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(Titulo)
+                .addGap(127, 127, 127))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(12, 12, 12)
                 .addComponent(Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -351,7 +353,7 @@ public class Cajero extends javax.swing.JFrame {
                     .addComponent(Volver))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -436,7 +438,7 @@ public class Cajero extends javax.swing.JFrame {
             int idcliente = Integer.parseInt(IDCliente.getText().trim());
             int ncuenta = Integer.parseInt(NumeroCuenta.getText().trim());
             int dinero = Integer.parseInt(DineroRetirar.getText().trim());
-
+            
             int x = c.RetirarDineroClienteCajero(idcliente, ncuenta, idcajero, dinero);
 
             if (x == 0) {
@@ -450,10 +452,9 @@ public class Cajero extends javax.swing.JFrame {
                 int[] valores = {10000, 20000, 50000, 100000};
                 for (int valor : valores) {
                     if (billetes.containsKey(valor)) {
-                        modelo.addRow(new Object[]{valor, billetes.get(valor)});
+                        modelo.addRow(new Object[]{valor, billetes.get(valor), valor*billetes.get(valor)});
                     }
                 }
-
             } else if (x == 2) {
                 DineroRetirar.setText("El cliente no existe.");
             } else if (x == 3) {
