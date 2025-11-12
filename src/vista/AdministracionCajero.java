@@ -396,7 +396,7 @@ public class AdministracionCajero extends javax.swing.JFrame {
             int ncien = Integer.parseInt(BilletesCien.getText().trim());
 
             int x = c.QuitarBilletesCajero(idcajero, ndiez, nveinte, ncincuenta, ncien);
-            
+
             if (x == 10) {
                 salida.setText("Descuento de billetes realizado.");
             } else if (x == 1) {

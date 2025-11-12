@@ -7,6 +7,8 @@ public class CConsultasCajero {
 
     Connection con;
     String query;
+    String resultado = "Retiro exitoso:\n";
+    HashMap<Integer, Integer> cajero = new HashMap<>();
 
     public CConsultasCajero() {
     }
@@ -58,7 +60,6 @@ public class CConsultasCajero {
             PreparedStatement preparar4 = con.prepareStatement(query);
             preparar4.executeUpdate();
 
-            HashMap<Integer, Integer> cajero = new HashMap<>();
             cajero.put(10000, resultado2.getInt("ndiez"));
             cajero.put(20000, resultado2.getInt("nveinte"));
             cajero.put(50000, resultado2.getInt("ncincuenta"));
@@ -96,47 +97,61 @@ public class CConsultasCajero {
 
                 return 6;
             }
-            
+
             boolean retiroValido = true;
-            
+
             if (dinero == 10000) {
-                
+
                 if (cajero.get(10000) >= 1) {
                     cajero.replace(10000, cajero.get(10000) - 1);
+                    resultado += "Billete de 10000: 1\n";
                 } else {
                     retiroValido = false;
                 }
-                
+
             } else if (dinero == 20000) {
-                
+
                 if (cajero.get(20000) >= 1) {
                     cajero.replace(20000, cajero.get(20000) - 1);
+                    resultado += "Billete de 20000: 1\n";
                 } else {
                     retiroValido = false;
                 }
-                
+
             } else if (dinero == 50000) {
-                
+
                 if (cajero.get(20000) >= 2 && cajero.get(10000) >= 1) {
                     cajero.replace(20000, cajero.get(20000) - 2);
                     cajero.replace(10000, cajero.get(10000) - 1);
+                    resultado += "Billete de 20000: 2\nBillete de 10000: 1\n";
                 } else {
                     retiroValido = false;
                 }
-                
+
             } else if (dinero == 100000) {
-                
+
                 if (cajero.get(50000) >= 1 && cajero.get(20000) >= 2 && cajero.get(10000) >= 1) {
                     cajero.replace(50000, cajero.get(50000) - 1);
                     cajero.replace(20000, cajero.get(20000) - 2);
                     cajero.replace(10000, cajero.get(10000) - 1);
+                    resultado += "Billete de 50000: 1\nBillete de 20000: 2\nBillete de 10000: 1\n";
                 } else {
                     retiroValido = false;
                 }
-                
+
             } else {
-                
+
                 int restante = dinero;
+
+                if (dinero > 100000) {
+                    if (cajero.get(50000) >= 1 && cajero.get(20000) >= 2 && cajero.get(10000) >= 1) {
+                        cajero.replace(50000, cajero.get(50000) - 1);
+                        cajero.replace(20000, cajero.get(20000) - 2);
+                        cajero.replace(10000, cajero.get(10000) - 1);
+                        resultado += "Billete de 50000: 1\nBillete de 20000: 2\nBillete de 10000: 1\n";
+                        restante -= 100000;
+                    }
+                }
 
                 int[] valores = {100000, 50000, 20000, 10000};
                 int disponibles;
@@ -155,6 +170,7 @@ public class CConsultasCajero {
 
                     if (cantidad > 0) {
                         cajero.replace(valor, cajero.get(valor) - cantidad);
+                        resultado += "Billete de " + valor + ": " + cantidad + "\n";
                         restante -= valor * cantidad;
                     }
                 }
@@ -163,7 +179,7 @@ public class CConsultasCajero {
                     retiroValido = false;
                 }
             }
-            
+
             if (!retiroValido) {
                 System.out.println("No hay billetes suficientes para retirar.");
 
@@ -192,12 +208,21 @@ public class CConsultasCajero {
             query = "UPDATE cajeros SET ndiez=" + ndiez + ", nveinte=" + nveinte + ", ncincuenta=" + ncincuenta + ", ncien=" + ncien + ", estado=0 WHERE id=" + idcajero + ";";
             PreparedStatement preparar12 = con.prepareStatement(query);
             preparar12.executeUpdate();
-
+            
+            System.out.println(resultado);
             return 1;
 
         } catch (SQLException ex) {
             System.out.println("Error en el SQL.");
             return 0;
         }
+    }
+
+    public String getResultado() {
+        return resultado;
+    }
+
+    public HashMap<Integer, Integer> getCajero() {
+        return cajero;
     }
 }

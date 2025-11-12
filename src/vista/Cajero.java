@@ -1,13 +1,21 @@
 package vista;
 
 import controlador.CControlCajero;
+import java.util.HashMap;
+import javax.swing.table.DefaultTableModel;
 
 public class Cajero extends javax.swing.JFrame {
-    
+
+    DefaultTableModel modelo;
     CControlCajero c = new CControlCajero();
-    
+
     public Cajero() {
         initComponents();
+
+        modelo = (DefaultTableModel) tabla.getModel();
+        tabla.setShowHorizontalLines(true);
+        tabla.setShowVerticalLines(true);
+        tabla.setGridColor(java.awt.Color.BLACK);
     }
 
     /**
@@ -22,6 +30,10 @@ public class Cajero extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jButton10 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
         Titulo = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         DineroRetirar = new javax.swing.JTextArea();
@@ -40,8 +52,6 @@ public class Cajero extends javax.swing.JFrame {
         Texto = new javax.swing.JLabel();
         Corregir = new javax.swing.JButton();
         Cerrar = new javax.swing.JButton();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        Salida = new javax.swing.JTextArea();
         Volver = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         IDCliente = new javax.swing.JTextField();
@@ -49,12 +59,40 @@ public class Cajero extends javax.swing.JFrame {
         IDCajero = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         NumeroCuenta = new javax.swing.JTextField();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        tabla = new javax.swing.JTable();
 
         jTextField1.setText("jTextField1");
 
         jButton10.setText("8");
 
         jLabel2.setText("jLabel2");
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable1);
+
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane4.setViewportView(jTable2);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -164,10 +202,6 @@ public class Cajero extends javax.swing.JFrame {
             }
         });
 
-        Salida.setColumns(20);
-        Salida.setRows(5);
-        jScrollPane3.setViewportView(Salida);
-
         Volver.setText("Volver");
         Volver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -181,96 +215,111 @@ public class Cajero extends javax.swing.JFrame {
 
         jLabel4.setText("Número cuenta:");
 
+        tabla.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Billete", "Cantidad"
+            }
+        ));
+        jScrollPane5.setViewportView(tabla);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(27, 27, 27)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(IDCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(Titulo)
-                                .addGap(23, 23, 23))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(IDCajero, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(NumeroCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel4)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(74, 74, 74)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(n1)
-                                    .addComponent(n4)
-                                    .addComponent(n7))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(14, 14, 14)
-                                        .addComponent(n2)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(n3))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(n8)
-                                                .addGap(12, 12, 12)
-                                                .addComponent(n9))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(n5)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(n6))
-                                            .addComponent(n0))))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(layout.createSequentialGroup()
+                                    .addGap(74, 74, 74)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(n1)
+                                        .addComponent(n4)
+                                        .addComponent(n7))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGap(14, 14, 14)
+                                            .addComponent(n2)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(n3))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGroup(layout.createSequentialGroup()
+                                                    .addComponent(n8)
+                                                    .addGap(12, 12, 12)
+                                                    .addComponent(n9))
+                                                .addGroup(layout.createSequentialGroup()
+                                                    .addComponent(n5)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                    .addComponent(n6))
+                                                .addComponent(n0))))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                     .addComponent(Retirar)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(Corregir)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(Limpiar)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(Texto)
-                                .addGap(63, 63, 63))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(Volver)
+                                    .addComponent(Limpiar)
+                                    .addGap(9, 9, 9))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addComponent(Texto)
+                                    .addGap(63, 63, 63))
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel1))
                                 .addGap(18, 18, 18)
-                                .addComponent(Cerrar)
-                                .addGap(40, 40, 40)))))
-                .addGap(54, 54, 54))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(IDCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(IDCajero, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(6, 6, 6)
+                                        .addComponent(NumeroCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel4)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(138, 138, 138)
+                        .addComponent(Titulo))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(66, 66, 66)
+                        .addComponent(Volver)
+                        .addGap(18, 18, 18)
+                        .addComponent(Cerrar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addComponent(Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
-                            .addComponent(IDCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(IDCajero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(NumeroCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                            .addComponent(IDCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(IDCajero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(NumeroCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
                 .addComponent(Texto, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -296,13 +345,13 @@ public class Cajero extends javax.swing.JFrame {
                     .addComponent(Retirar)
                     .addComponent(Corregir)
                     .addComponent(Limpiar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Cerrar)
                     .addComponent(Volver))
-                .addGap(45, 45, 45))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         pack();
@@ -365,56 +414,67 @@ public class Cajero extends javax.swing.JFrame {
 
     private void CorregirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CorregirActionPerformed
         // TODO add your handling code here:
-        String Cadena = Salida.getText();
+        String Cadena = DineroRetirar.getText();
         if (Cadena == null) {
-            Salida.setText("No hay nada para corregir.");
+            DineroRetirar.setText("No hay nada para corregir.");
             return;
         }
-        
+
         String NCadena = "";
         for (int i = 0; i < Cadena.length() - 1; i++) {
             NCadena += Cadena.charAt(i);
         }
-        Salida.setText(NCadena);
+        DineroRetirar.setText(NCadena);
     }//GEN-LAST:event_CorregirActionPerformed
 
     private void RetirarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RetirarActionPerformed
         // TODO add your handling code here:
 
         if (!IDCajero.getText().isEmpty() && !IDCliente.getText().isEmpty() && !NumeroCuenta.getText().isEmpty() && !DineroRetirar.getText().isEmpty()) {
-            
-            int idcajero = Integer.parseInt(IDCajero.getText());
-            int idcliente = Integer.parseInt(IDCliente.getText());
-            int ncuenta = Integer.parseInt(NumeroCuenta.getText());
-            int dinero = Integer.parseInt(DineroRetirar.getText());
-            
+
+            int idcajero = Integer.parseInt(IDCajero.getText().trim());
+            int idcliente = Integer.parseInt(IDCliente.getText().trim());
+            int ncuenta = Integer.parseInt(NumeroCuenta.getText().trim());
+            int dinero = Integer.parseInt(DineroRetirar.getText().trim());
+
             int x = c.RetirarDineroClienteCajero(idcliente, ncuenta, idcajero, dinero);
-            
+
             if (x == 0) {
-                Salida.setText("Error en el sql.");
+                DineroRetirar.setText("Error en el sql.");
             } else if (x == 1) {
-                Salida.setText("Retiro exitoso.");
+                DineroRetirar.setText(c.getResultado());
+
+                modelo.setRowCount(0);
+                HashMap<Integer, Integer> billetes = c.getCajero();
+
+                int[] valores = {10000, 20000, 50000, 100000};
+                for (int valor : valores) {
+                    if (billetes.containsKey(valor)) {
+                        modelo.addRow(new Object[]{valor, billetes.get(valor)});
+                    }
+                }
+
             } else if (x == 2) {
-                Salida.setText("El cliente no existe.");
+                DineroRetirar.setText("El cliente no existe.");
             } else if (x == 3) {
-                Salida.setText("Saldo insuficiente.");
+                DineroRetirar.setText("Saldo insuficiente.");
             } else if (x == 4) {
-                Salida.setText("El cajero no existe.");
+                DineroRetirar.setText("El cajero no existe.");
             } else if (x == 5) {
-                Salida.setText("Monto no permitido, solo múltiplos de 10.000.");
+                DineroRetirar.setText("Monto no permitido, solo múltiplos de 10.000.");
             } else if (x == 6) {
-                Salida.setText("Monto no permitido, solo se puede entre 10.000 y 1.000.000.");
+                DineroRetirar.setText("Monto no permitido, solo se puede entre 10.000 y 1.000.000.");
             } else if (x == 7) {
-                Salida.setText("No hay billetes suficientes para retirar.");
+                DineroRetirar.setText("No hay billetes suficientes para retirar.");
             } else if (x == 8) {
-                Salida.setText("El cliente está ocupado.");
+                DineroRetirar.setText("El cliente está ocupado.");
             } else if (x == 9) {
-                Salida.setText("El cajero está ocupado.");
+                DineroRetirar.setText("El cajero está ocupado.");
             } else if (x == 10) {
-                Salida.setText("Ingrese un valor entre 10.000 y 1.000.000.");
+                DineroRetirar.setText("Ingrese un valor entre 10.000 y 1.000.000.");
             }
         } else {
-            Salida.setText("Ingrese los datos necesarios para retirar.");
+            DineroRetirar.setText("Ingrese los datos necesarios para retirar.");
         }
     }//GEN-LAST:event_RetirarActionPerformed
 
@@ -477,7 +537,6 @@ public class Cajero extends javax.swing.JFrame {
     private javax.swing.JButton Limpiar;
     private javax.swing.JTextField NumeroCuenta;
     private javax.swing.JButton Retirar;
-    private javax.swing.JTextArea Salida;
     private javax.swing.JLabel Texto;
     private javax.swing.JLabel Titulo;
     private javax.swing.JButton Volver;
@@ -487,7 +546,11 @@ public class Cajero extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JButton n0;
     private javax.swing.JButton n1;
@@ -499,5 +562,6 @@ public class Cajero extends javax.swing.JFrame {
     private javax.swing.JButton n7;
     private javax.swing.JButton n8;
     private javax.swing.JButton n9;
+    private javax.swing.JTable tabla;
     // End of variables declaration//GEN-END:variables
 }
