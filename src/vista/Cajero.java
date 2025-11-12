@@ -410,6 +410,8 @@ public class Cajero extends javax.swing.JFrame {
                 Salida.setText("El cliente está ocupado.");
             } else if (x == 9) {
                 Salida.setText("El cajero está ocupado.");
+            } else if (x == 10) {
+                Salida.setText("Ingrese un valor entre 10.000 y 1.000.000.");
             }
         } else {
             Salida.setText("Ingrese los datos necesarios para retirar.");
