@@ -284,7 +284,7 @@ public class AdministracionCajero extends javax.swing.JFrame {
     private void AgregarCajeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarCajeroActionPerformed
         // TODO add your handling code here:
 
-        if (!BilletesDiez.getText().isEmpty() || !BilletesVeinte.getText().isEmpty() || !BilletesCincuenta.getText().isEmpty() || !BilletesCien.getText().isEmpty()) {
+        if (!BilletesDiez.getText().isEmpty() && !BilletesVeinte.getText().isEmpty() && !BilletesCincuenta.getText().isEmpty() && !BilletesCien.getText().isEmpty()) {
 
             int ndiez = Integer.parseInt(BilletesDiez.getText().trim());
             int nveinte = Integer.parseInt(BilletesVeinte.getText().trim());
@@ -306,7 +306,7 @@ public class AdministracionCajero extends javax.swing.JFrame {
     private void EditarCajeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarCajeroActionPerformed
         // TODO add your handling code here:
 
-        if (!BilletesDiez.getText().isEmpty() || !BilletesVeinte.getText().isEmpty() || !BilletesCincuenta.getText().isEmpty() || !BilletesCien.getText().isEmpty() || !IDCajero.getText().isEmpty()) {
+        if (!BilletesDiez.getText().isEmpty() && !BilletesVeinte.getText().isEmpty() && !BilletesCincuenta.getText().isEmpty() && !BilletesCien.getText().isEmpty() && !IDCajero.getText().isEmpty()) {
 
             int ndiez = Integer.parseInt(BilletesDiez.getText().trim());
             int nveinte = Integer.parseInt(BilletesVeinte.getText().trim());
@@ -360,7 +360,7 @@ public class AdministracionCajero extends javax.swing.JFrame {
     private void AgregarBilletesCajeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarBilletesCajeroActionPerformed
         // TODO add your handling code here:
 
-        if (!BilletesDiez.getText().isEmpty() || !BilletesVeinte.getText().isEmpty() || !BilletesCincuenta.getText().isEmpty() || !BilletesCien.getText().isEmpty() || !IDCajero.getText().isEmpty()) {
+        if (!BilletesDiez.getText().isEmpty() && !BilletesVeinte.getText().isEmpty() && !BilletesCincuenta.getText().isEmpty() && !BilletesCien.getText().isEmpty() && !IDCajero.getText().isEmpty()) {
 
             int idcajero = Integer.parseInt(IDCajero.getText().trim());
             int ndiez = Integer.parseInt(BilletesDiez.getText().trim());
@@ -387,7 +387,7 @@ public class AdministracionCajero extends javax.swing.JFrame {
     private void QuitarBilletesCajeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_QuitarBilletesCajeroActionPerformed
         // TODO add your handling code here:
 
-        if (!BilletesDiez.getText().isEmpty() || !BilletesVeinte.getText().isEmpty() || !BilletesCincuenta.getText().isEmpty() || !BilletesCien.getText().isEmpty() || !IDCajero.getText().isEmpty()) {
+        if (!BilletesDiez.getText().isEmpty() && !BilletesVeinte.getText().isEmpty() && !BilletesCincuenta.getText().isEmpty() && !BilletesCien.getText().isEmpty() && !IDCajero.getText().isEmpty()) {
 
             int idcajero = Integer.parseInt(IDCajero.getText().trim());
             int ndiez = Integer.parseInt(BilletesDiez.getText().trim());

@@ -175,6 +175,12 @@ public class Administracion extends javax.swing.JFrame {
 
         jLabel8.setText("ID cliente:");
 
+        IDCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                IDClienteActionPerformed(evt);
+            }
+        });
+
         jLabel9.setText("Dinero para consignar:");
 
         jLabel10.setText("Dinero para retirar:");
@@ -365,7 +371,7 @@ public class Administracion extends javax.swing.JFrame {
     private void AgregarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarClienteActionPerformed
         // TODO add your handling code here:
 
-        if (!Nombre.getText().isEmpty() || !Apellido.getText().isEmpty() || !Telefono.getText().isEmpty() || !Ciudad.getText().isEmpty() || !NumeroCuenta.getText().isEmpty() || !Saldo.getText().isEmpty()) {
+        if (!Nombre.getText().isEmpty() && !Apellido.getText().isEmpty() && !Telefono.getText().isEmpty() && !Ciudad.getText().isEmpty() && !NumeroCuenta.getText().isEmpty() && !Saldo.getText().isEmpty()) {
 
             int ncuenta = Integer.parseInt(NumeroCuenta.getText().trim());
             double saldo = Integer.parseInt(Saldo.getText().trim());
@@ -387,7 +393,7 @@ public class Administracion extends javax.swing.JFrame {
     private void EditarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarClienteActionPerformed
         // TODO add your handling code here:
 
-        if (!Nombre.getText().isEmpty() || !Apellido.getText().isEmpty() || !Telefono.getText().isEmpty() || !Ciudad.getText().isEmpty() || !NumeroCuenta.getText().isEmpty() || !Saldo.getText().isEmpty() || !IDCliente.getText().isEmpty()) {
+        if (!Nombre.getText().isEmpty() && !Apellido.getText().isEmpty() && !Telefono.getText().isEmpty() && !Ciudad.getText().isEmpty() && !NumeroCuenta.getText().isEmpty() && !Saldo.getText().isEmpty() && !IDCliente.getText().isEmpty()) {
 
             int ncuenta = Integer.parseInt(NumeroCuenta.getText().trim());
             double saldo = Integer.parseInt(Saldo.getText().trim());
@@ -486,7 +492,7 @@ public class Administracion extends javax.swing.JFrame {
     private void ConsignarDineroClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsignarDineroClienteActionPerformed
         // TODO add your handling code here:
 
-        if (!IDCliente.getText().isEmpty() || !DineroConsignar.getText().isEmpty()) {
+        if (!IDCliente.getText().isEmpty() && !DineroConsignar.getText().isEmpty()) {
 
             int idcliente = Integer.parseInt(IDCliente.getText().trim());
             double dinero = Integer.parseInt(DineroConsignar.getText().trim());
@@ -510,7 +516,7 @@ public class Administracion extends javax.swing.JFrame {
     private void RetirarDineroClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RetirarDineroClienteActionPerformed
         // TODO add your handling code here:
 
-        if (!IDCliente.getText().isEmpty() || !DineroRetirar.getText().isEmpty()) {
+        if (!IDCliente.getText().isEmpty() && !DineroRetirar.getText().isEmpty()) {
 
             int idcliente = Integer.parseInt(IDCliente.getText().trim());
             double dinero = Integer.parseInt(DineroRetirar.getText().trim());
@@ -532,6 +538,10 @@ public class Administracion extends javax.swing.JFrame {
             salida.setText("Ingrese el id del cliente y cuanto dinero va a retirar.");
         }
     }//GEN-LAST:event_RetirarDineroClienteActionPerformed
+
+    private void IDClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IDClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_IDClienteActionPerformed
 
     /**
      * @param args the command line arguments
