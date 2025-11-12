@@ -7,6 +7,7 @@ public class CConsultasCajero {
 
     Connection con;
     String query;
+    
     String resultado = "Retiro exitoso:\n";
     HashMap<Integer, Integer> cajero = new HashMap<>();
 
@@ -67,6 +68,15 @@ public class CConsultasCajero {
 
             if (dinero == 0) {
                 System.out.println("Ingrese un valor entre 10.000 y 1.000.000.");
+                
+                query = "UPDATE clientes SET estado=0 WHERE ncuenta=" + ncuenta + " AND id=" + idcliente + ";";
+                PreparedStatement preparar6 = con.prepareStatement(query);
+                preparar6.executeUpdate();
+
+                query = "UPDATE cajeros SET estado=0 WHERE id=" + idcajero + ";";
+                PreparedStatement preparar7 = con.prepareStatement(query);
+                preparar7.executeUpdate();
+                
                 return 10;
             }
 
@@ -74,12 +84,12 @@ public class CConsultasCajero {
                 System.out.println("Monto no permitido, solo múltiplos de 10.000.");
 
                 query = "UPDATE clientes SET estado=0 WHERE ncuenta=" + ncuenta + " AND id=" + idcliente + ";";
-                PreparedStatement preparar5 = con.prepareStatement(query);
-                preparar5.executeUpdate();
+                PreparedStatement preparar8 = con.prepareStatement(query);
+                preparar8.executeUpdate();
 
                 query = "UPDATE cajeros SET estado=0 WHERE id=" + idcajero + ";";
-                PreparedStatement preparar6 = con.prepareStatement(query);
-                preparar6.executeUpdate();
+                PreparedStatement preparar9 = con.prepareStatement(query);
+                preparar9.executeUpdate();
 
                 return 5;
             }
@@ -88,12 +98,12 @@ public class CConsultasCajero {
                 System.out.println("Monto no permitido, solo se puede entre 10.000 y 1.000.000.");
 
                 query = "UPDATE clientes SET estado=0 WHERE ncuenta=" + ncuenta + " AND id=" + idcliente + ";";
-                PreparedStatement preparar7 = con.prepareStatement(query);
-                preparar7.executeUpdate();
+                PreparedStatement preparar10 = con.prepareStatement(query);
+                preparar10.executeUpdate();
 
                 query = "UPDATE cajeros SET estado=0 WHERE id=" + idcajero + ";";
-                PreparedStatement preparar8 = con.prepareStatement(query);
-                preparar8.executeUpdate();
+                PreparedStatement preparar11 = con.prepareStatement(query);
+                preparar11.executeUpdate();
 
                 return 6;
             }
@@ -184,12 +194,12 @@ public class CConsultasCajero {
                 System.out.println("No hay billetes suficientes para retirar.");
 
                 query = "UPDATE clientes SET estado=0 WHERE ncuenta=" + ncuenta + " AND id=" + idcliente + ";";
-                PreparedStatement preparar9 = con.prepareStatement(query);
-                preparar9.executeUpdate();
+                PreparedStatement preparar12 = con.prepareStatement(query);
+                preparar12.executeUpdate();
 
                 query = "UPDATE cajeros SET estado=0 WHERE id=" + idcajero + ";";
-                PreparedStatement preparar10 = con.prepareStatement(query);
-                preparar10.executeUpdate();
+                PreparedStatement preparar13 = con.prepareStatement(query);
+                preparar13.executeUpdate();
 
                 return 7;
             }
@@ -197,8 +207,8 @@ public class CConsultasCajero {
             saldo -= dinero;
 
             query = "UPDATE clientes SET saldo=" + saldo + ", estado=0 WHERE ncuenta=" + ncuenta + " AND id=" + idcliente + ";";
-            PreparedStatement preparar11 = con.prepareStatement(query);
-            preparar11.executeUpdate();
+            PreparedStatement preparar14 = con.prepareStatement(query);
+            preparar14.executeUpdate();
 
             int ndiez = cajero.get(10000);
             int nveinte = cajero.get(20000);
@@ -206,8 +216,8 @@ public class CConsultasCajero {
             int ncien = cajero.get(100000);
 
             query = "UPDATE cajeros SET ndiez=" + ndiez + ", nveinte=" + nveinte + ", ncincuenta=" + ncincuenta + ", ncien=" + ncien + ", estado=0 WHERE id=" + idcajero + ";";
-            PreparedStatement preparar12 = con.prepareStatement(query);
-            preparar12.executeUpdate();
+            PreparedStatement preparar15 = con.prepareStatement(query);
+            preparar15.executeUpdate();
             
             System.out.println(resultado);
             return 1;
